@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://liangsimajing.local/schemas/query-frame.schema.json",
+  "title": "QueryFrame",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "facts", "user_interpretations", "unknowns", "desired_outcomes",
+    "hard_constraints", "stakeholders", "relationships", "power_balance",
+    "core_conflicts", "decision_stage", "information_quality", "time_pressure",
+    "reversibility", "risk_types", "legal_or_safety_flags", "clarification_needed"
+  ],
+  "properties": {
+    "facts": {"type": "array", "items": {"type": "string"}},
+    "user_interpretations": {"type": "array", "items": {"type": "string"}},
+    "unknowns": {"type": "array", "items": {"type": "string"}},
+    "desired_outcomes": {"type": "array", "items": {"type": "string"}},
+    "hard_constraints": {"type": "array", "items": {"type": "string"}},
+    "stakeholders": {"type": "array", "items": {"type": "string"}},
+    "relationships": {"type": "array", "items": {"type": "string"}},
+    "power_balance": {"enum": ["dominant", "advantaged", "balanced", "disadvantaged", "dependent", "unknown"]},
+    "core_conflicts": {"type": "array", "items": {"type": "string"}},
+    "decision_stage": {"enum": ["emerging", "escalating", "crisis", "aftermath", "exit", "unknown"]},
+    "information_quality": {"enum": ["poor", "partial", "asymmetric", "adequate", "deceptive", "unknown"]},
+    "time_pressure": {"enum": ["low", "medium", "high", "immediate", "unknown"]},
+    "reversibility": {"enum": ["high", "medium", "low", "none", "unknown"]},
+    "risk_types": {"type": "array", "items": {"type": "string"}},
+    "legal_or_safety_flags": {"type": "array", "items": {"type": "string"}},
+    "clarification_needed": {"type": "boolean"}
+  }
+}

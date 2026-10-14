@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "content_version": "0.1.0-upstream",
+  "generated_at": "2026-09-23T00:00:00+08:00",
+  "editions": [
+    {
+      "edition_id": "yuan-zhao-chinese-history-shiji-c4ac8f1",
+      "work": "史记",
+      "source_url": "https://github.com/YuanZHAO321/Chinese-History",
+      "source_commit": "c4ac8f15c34f393afd320bb3516b054e23a94b78",
+      "license": "Apache-2.0",
+      "file": "upstream/chinese-history/assets/史记.txt",
+      "sha256": "329af461364e21ff8e716a8b19ebf577de56ef49f4637c9c5978b3f94b7adc95"
+    },
+    {
+      "edition_id": "yuan-zhao-chinese-history-zizhitongjian-c4ac8f1",
+      "work": "资治通鉴",
+      "source_url": "https://github.com/YuanZHAO321/Chinese-History",
+      "source_commit": "c4ac8f15c34f393afd320bb3516b054e23a94b78",
+      "license": "Apache-2.0",
+      "file": "upstream/chinese-history/assets/资治通鉴.txt",
+      "sha256": "f4dfcca2b668fabb3ab58480a97fc52202242510ef150d840cc2d80a56ab58e0"
+    }
+  ],
+  "release_blocked": false,
+  "release_block_reasons": []
+}

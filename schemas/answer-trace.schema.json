@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://liangsimajing.local/schemas/answer-trace.schema.json",
+  "title": "AnswerTrace",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["trace_id", "created_at", "query_frame", "candidate_cases", "selected_cases", "citations", "validation"],
+  "properties": {
+    "trace_id": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "query_frame": {"$ref": "query-frame.schema.json"},
+    "candidate_cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "score", "reasons"],
+        "properties": {
+          "case_id": {"type": "string"},
+          "score": {"type": "number", "minimum": 0, "maximum": 1},
+          "reasons": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "selected_cases": {"type": "array", "minItems": 1, "maxItems": 3, "items": {"type": "string"}},
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["claim_id", "passage_id", "quoted_text", "exact_match"],
+        "properties": {
+          "claim_id": {"type": "string"},
+          "passage_id": {"type": "string"},
+          "quoted_text": {"type": "string"},
+          "exact_match": {"type": "boolean"}
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["case_ids_valid", "passage_ids_valid", "citations_valid", "degraded"],
+      "properties": {
+        "case_ids_valid": {"type": "boolean"},
+        "passage_ids_valid": {"type": "boolean"},
+        "citations_valid": {"type": "boolean"},
+        "degraded": {"type": "boolean"},
+        "messages": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

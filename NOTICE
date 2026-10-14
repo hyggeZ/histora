@@ -1,0 +1,12 @@
+本项目包含由下列开源项目派生的资料：
+
+ChineseHistory · 两司马之镜
+Copyright: YuanZHAO321 and contributors
+Source: https://github.com/YuanZHAO321/Chinese-History
+Pinned commit: c4ac8f15c34f393afd320bb3516b054e23a94b78
+License: Apache License 2.0
+
+本项目对上游内容进行了重新分段、结构化标注、索引和移动端适配。上游许可证全文保存在：
+content/upstream/chinese-history/LICENSE
+
+《史记》《资治通鉴》的古典原著已经进入公有领域；本项目仍保留并遵守所采用数字文件及整理内容的上游许可和署名。

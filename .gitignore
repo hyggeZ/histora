@@ -1,0 +1,24 @@
+# Local credentials, signing keys and machine settings
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.jks
+*.keystore
+key.properties
+local.properties
+
+# Generated artifacts and caches
+*.apk
+*.aab
+*.log
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+**/build/
+**/.dart_tool/
+**/.gradle/

@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://liangsimajing.local/schemas/case-card.schema.json",
+  "title": "HistoricalCaseCard",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id", "title", "status", "time_scope", "actors", "decision_frame",
+    "options", "chosen_option_id", "outcomes", "costs", "claims",
+    "passage_refs", "similarity_features", "modern_transfer", "review", "schema_version"
+  ],
+  "properties": {
+    "case_id": {"type": "string", "pattern": "^CASE-[A-Z0-9-]+$"},
+    "title": {"type": "string", "minLength": 2},
+    "status": {"enum": ["draft", "reviewed", "published", "deprecated"]},
+    "aliases": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "time_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start_label", "end_label", "chronology_note"],
+      "properties": {
+        "start_label": {"type": "string"},
+        "end_label": {"type": "string"},
+        "chronology_note": {"type": "string"}
+      }
+    },
+    "actors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["actor_id", "name", "role", "goals", "constraints", "resources", "inferred_motives"],
+        "properties": {
+          "actor_id": {"type": "string"},
+          "name": {"type": "string"},
+          "role": {"type": "string"},
+          "goals": {"type": "array", "items": {"type": "string"}},
+          "constraints": {"type": "array", "items": {"type": "string"}},
+          "resources": {"type": "array", "items": {"type": "string"}},
+          "inferred_motives": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["text", "confidence", "basis_claim_ids"],
+              "properties": {
+                "text": {"type": "string"},
+                "confidence": {"enum": ["low", "medium", "high"]},
+                "basis_claim_ids": {"type": "array", "items": {"type": "string"}}
+              }
+            }
+          }
+        }
+      }
+    },
+    "decision_frame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision_maker_ids", "decision_point", "known_at_the_time", "unknown_at_the_time", "deadline_or_window", "irreversible_actions"],
+      "properties": {
+        "decision_maker_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "decision_point": {"type": "string", "minLength": 1},
+        "known_at_the_time": {"type": "array", "items": {"type": "string"}},
+        "unknown_at_the_time": {"type": "array", "items": {"type": "string"}},
+        "deadline_or_window": {"type": ["string", "null"]},
+        "irreversible_actions": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "options": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["option_id", "label", "historicity", "supporting_claim_ids", "expected_upside", "expected_risk"],
+        "properties": {
+          "option_id": {"type": "string"},
+          "label": {"type": "string"},
+          "historicity": {"enum": ["explicitly_recorded", "contemporaneously_proposed", "compiler_reconstruction", "model_counterfactual"]},
+          "supporting_claim_ids": {"type": "array", "items": {"type": "string"}},
+          "expected_upside": {"type": "array", "items": {"type": "string"}},
+          "expected_risk": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "chosen_option_id": {"type": "string"},
+    "outcomes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["immediate", "medium_term", "long_term", "unintended"],
+      "properties": {
+        "immediate": {"type": "array", "items": {"type": "string"}},
+        "medium_term": {"type": "array", "items": {"type": "string"}},
+        "long_term": {"type": "array", "items": {"type": "string"}},
+        "unintended": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "costs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["explicit", "implicit", "opportunity", "transferred_to_others"],
+      "properties": {
+        "explicit": {"type": "array", "items": {"type": "string"}},
+        "implicit": {"type": "array", "items": {"type": "string"}},
+        "opportunity": {"type": "array", "items": {"type": "string"}},
+        "transferred_to_others": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["claim_id", "text", "evidence_class", "confidence", "passage_refs", "contradiction_note"],
+        "properties": {
+          "claim_id": {"type": "string"},
+          "text": {"type": "string"},
+          "evidence_class": {"enum": ["recorded_fact", "historian_comment", "compiler_interpretation", "model_inference", "counterfactual"]},
+          "confidence": {"enum": ["low", "medium", "high"]},
+          "passage_refs": {"type": "array", "items": {"type": "string"}},
+          "contradiction_note": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "passage_refs": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true},
+    "similarity_features": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["relationships", "power_balance", "core_conflicts", "decision_stage", "information_quality", "time_pressure", "reversibility", "risk_types", "patterns"],
+      "properties": {
+        "relationships": {"type": "array", "items": {"type": "string"}},
+        "power_balance": {"enum": ["dominant", "advantaged", "balanced", "disadvantaged", "dependent"]},
+        "core_conflicts": {"type": "array", "items": {"type": "string"}},
+        "decision_stage": {"enum": ["emerging", "escalating", "crisis", "aftermath", "exit"]},
+        "information_quality": {"enum": ["poor", "partial", "asymmetric", "adequate", "deceptive"]},
+        "time_pressure": {"enum": ["low", "medium", "high", "immediate"]},
+        "reversibility": {"enum": ["high", "medium", "low", "none"]},
+        "risk_types": {"type": "array", "items": {"type": "string"}},
+        "patterns": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "modern_transfer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["transferable_mechanisms", "non_transferable_conditions", "misuse_warnings"],
+      "properties": {
+        "transferable_mechanisms": {"type": "array", "items": {"type": "string"}},
+        "non_transferable_conditions": {"type": "array", "items": {"type": "string"}},
+        "misuse_warnings": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reviewer_count", "last_reviewed_at", "notes"],
+      "properties": {
+        "reviewer_count": {"type": "integer", "minimum": 0},
+        "last_reviewed_at": {"type": ["string", "null"], "format": "date"},
+        "notes": {"type": "string"}
+      }
+    },
+    "schema_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}
+  }
+}

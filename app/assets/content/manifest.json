@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0.0",
+  "content_version": "0.1.0",
+  "release_blocked": false,
+  "database_file": "history.db",
+  "database_sha256": "8cb09ca71c36fc7f6cf5b9386c9c74cae570aae7ba3559cb57c899c2c670b33b",
+  "passage_count": 33862,
+  "case_count": 45,
+  "published_case_count": 45,
+  "source_commit": "c4ac8f15c34f393afd320bb3516b054e23a94b78"
+}

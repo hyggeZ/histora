@@ -1,0 +1,17 @@
+[
+  {"query": "功高以后怎样避免领导猜忌", "expected_any": ["CASE-4BB7721C0C", "CASE-73BB90F915", "CASE-094AA21E75"]},
+  {"query": "老板听不进反对意见", "expected_any": ["CASE-7367AB13ED", "CASE-17080CAF4E", "CASE-0514172782"]},
+  {"query": "团队只报喜不报忧信息失真", "expected_any": ["CASE-17080CAF4E", "CASE-0514172782"]},
+  {"query": "是否应该功成身退", "expected_any": ["CASE-97EF2686B7", "CASE-8B728EC40E"]},
+  {"query": "能力很强但是品德有问题", "expected_any": ["CASE-19DB2F19D7", "CASE-4A99FA975B"]},
+  {"query": "弱势时忍耐等待机会", "expected_any": ["CASE-B749D6E557", "CASE-2170C745DB"]},
+  {"query": "面对强敌先暂时让步", "expected_any": ["CASE-A90776DE59", "CASE-B749D6E557"]},
+  {"query": "对手联盟内部利益不一致", "expected_any": ["CASE-6ECCDF9E19"]},
+  {"query": "接班人选择导致组织内斗", "expected_any": ["CASE-67EC79C109", "CASE-997AD49F0C"]},
+  {"query": "只会理论缺乏实际经验", "expected_any": ["CASE-B3018077C5"]},
+  {"query": "领导者如何使用比自己强的人", "expected_any": ["CASE-09F78FD1BD", "CASE-8BD14D402B"]},
+  {"query": "两个部门负责人冲突如何和解", "expected_any": ["CASE-0840D355BA"]},
+  {"query": "公开说假话测试谁服从", "expected_any": ["CASE-CF50CDEB31"]},
+  {"query": "业务骨干能力强却不懂组织政治", "expected_any": ["CASE-094AA21E75"]},
+  {"query": "推动改革成功以后遭到清算", "expected_any": ["CASE-35E8918373"]}
+]
